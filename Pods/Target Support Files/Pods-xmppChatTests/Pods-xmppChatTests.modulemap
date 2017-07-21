@@ -1,0 +1,6 @@
+framework module Pods_xmppChatTests {
+  umbrella header "Pods-xmppChatTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
