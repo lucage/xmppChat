@@ -98,7 +98,7 @@ extension XMPPManager: XMPPStreamDelegate {
                 print("available")
             }
             else if presenceType == "subscribe" {
-               xmppRoster.subscribePresence(toUser:presence.from())
+//               xmppRoster.subscribePresence(toUser:presence.from())
             }
             else {
                 print("presence type");
