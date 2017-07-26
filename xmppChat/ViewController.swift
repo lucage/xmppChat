@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageTF: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
 
+    @IBOutlet weak var receivedMessage: UITextView!
     //Send
     let xmppRosterStorage = XMPPRosterCoreDataStorage()
     var xmppRoster: XMPPRoster!
@@ -61,12 +62,15 @@ class ViewController: UIViewController {
     
     @IBAction func sendMessage(_ sender: Any) {
         
-        let message = self.messageTF.text
-        let senderJID = XMPPJID.init(string: "testxmppluca@jabb3r.de")
-        let msg = XMPPMessage(type: "chat", to: senderJID)
-        msg?.addBody(message)
-        self.xmppManager.xmppStream.send(msg)
+        self.xmppManager.sendMessage(text: self.messageTF.text!, toUser: "testxmppluca@jabb3r.de", messageUID: "")
+    self.xmppManager.sendMessage(text: XMPPConstants.text.checkPrefix, toUser: "testxmppluca@jabb3r.de", messageUID: "")
+        
+//        self.xmppManager.sendServiceMessage(text: self.xmppManager. , toUser:"testxmpppippo@jabb3r.de")
+    
+    
     }
+    
+    
     
     @IBAction func goOnLine(_ sender: Any) {
         self.xmppManager.goOnline()
@@ -96,6 +100,7 @@ extension ViewController: XMPPStreamDelegate, XMPPRosterDelegate {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
     
     
 }
